@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本框输入字符个数限制</title>
+	<style>
+		body{
+			background: #f0f0f0;
+			font-size: 12px;
+			color: #808080;
+		}
+		textarea{resize: none;outline:none;}
+		.editorArea{width:560px;margin:60px auto;}
+		.editor{
+			width: 548px;
+			height: 120px;
+			text-align: left;
+			border-radius: 4px;
+			border: 1px solid #d2d2d2;
+			box-shadow: 1px 1px 3px rgba(34, 25, 25, 0.2);
+			padding: 5px;
+			overflow: hidden;
+		}
+		.hint{text-align: right;}
+	</style>
+</head>
+<body>
+	<form action="">
+		<div class="editorArea">
+			<textarea name="" id="" cols="30" rows="10" class="editor"></textarea>
+			<p class="hint">
+				<span>还能输入<em>100</em>字</span>
+				<input type="submit" class="btn" value="发布">
+			</p>
+		</div>
+	</form>
+</body>
+</html>
