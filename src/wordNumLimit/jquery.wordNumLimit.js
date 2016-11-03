@@ -3,6 +3,7 @@
 * @author: Cynthia.Cheng
 * Last update date: 2016-11-02
 * Copyright(c) 2016 by Cynthia.Cheng
+* 要求jQuery 1.9+以上
 */
 
 var wordNumLimit = (function($){
@@ -31,18 +32,19 @@ var wordNumLimit = (function($){
 			strLen = element.val().length;
 			strLen > options.maxnum ? overflow(element, ~~(strLen-options.maxnum)) : normal(~~(options.maxnum - strLen));
 		}else{
-			var strnum = (element.val().replace(/\w/g,"")).length,
+			//正则表达式/[^\x00-\xff]/g匹配汉字汉字符号
+			var strnum = (element.val().replace(/[^\x00-\xff]/g,"")).length,
 				abcnum =  element.val().length - strnum;
-			strLen = strnum * 2 + abcnum; //字符串的长度
+			strLen = abcnum * 2 + strnum; //字符串的长度
 			strLen > options.maxnum * 2 ? overflow(element, ~~((strLen-options.maxnum*2)/2)) : normal(~~((options.maxnum*2-strLen)/2));
 		}
 	};
 	//溢出时执行的操作
 	overflow = function(){
 		wordSliceFun(arguments[0]);
-		hintTxt('已超出<em>'+arguments[1]+'</em>字');
 		if(options.isDisableBtn){
 			options.$hint.find('input[type=submit]').attr('disabled',true);
+			hintTxt('已超出<em>'+arguments[1]+'</em>字');
 		}
 	};
 	//正常操作
