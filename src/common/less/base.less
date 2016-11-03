@@ -1,0 +1,50 @@
+@import "mixins.less";
+@font-color:#5e5e5e;
+@font-color-gray:#a5a5a5;
+@common-blue:#178fe6;
+@common-blue-dark:#1377bf;
+@common-gray-light:#d2d2d2;
+@border-line-color:#e9ebee;
+@color-orange: #fea964;
+@color-red: #ff6b6b;
+@hack:~"\9"; /*IE6-IE10*/
+@hack:~"\0"; /*IE8*/
+@hack:~"\9\0";/*IE9"*/
+.panel(@background:#fff;@border-radius:2px;){
+    background: @background;
+    border-radius:@border-radius;
+    box-shadow:0 0 2px 0 #cbcbcb;
+}
+body{
+    font-size: 12px;
+    font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";
+}
+div,p,ul,li,form,h1,h2,h3,h4,h5,h6,button,textarea{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+ul{list-style-type:none;}
+a,input,button,select,textarea{outline:none;}
+a{text-decoration: none;color:@common-blue;}
+em,i{font-style:normal;}
+input[type=text]{-webkit-appearence: none;}
+[hidden]{display:none !important;}
+.hide-txt{.hide-text();}
+.pull-right{float:right;}
+.pull-left{float:left;}
+/**通用按钮样式*/
+
+/**幽灵按钮*/
+/**雪碧图*/
+.sprite-icon{
+	display: inline-block;
+	vertical-align: middle;
+}
+.mt2{margin-top:2px;}
+.mt10{margin-top: 10px;}
+.mr6{margin-right:6px;}
+
+.pull-left{float:left;}
+.pull-right{float:right;}
+.color-orange{color:#c35326;}
+
+
+

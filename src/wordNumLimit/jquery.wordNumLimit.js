@@ -20,13 +20,19 @@ var wordNumLimit = (function($){
 
 	//输入字符个数限制
 	wordNumLimitFun = function(element){
-		var strLen, maxnum = options.maxnum;
+		var strLen;
 		if(options.limitByLen){
 			strLen = element.text().length;
+			if(strLen > options.maxnum){
+
+			}
 		}else{
 			var strnum = (element.text().replace(/\w/g,"")).length,
 				abcnum =  element.text().length - strnum;
 			strLen = strnum * 2 + abcnum; //字符串的长度
+			if(strLen > options.maxnum * 2){
+				
+			}
 		}
 	};
 
