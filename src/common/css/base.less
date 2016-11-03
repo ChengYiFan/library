@@ -31,13 +31,21 @@ input[type=text]{-webkit-appearence: none;}
 .pull-right{float:right;}
 .pull-left{float:left;}
 /**通用按钮样式*/
-
-/**幽灵按钮*/
-/**雪碧图*/
-.sprite-icon{
-	display: inline-block;
-	vertical-align: middle;
+.btn{display: inline-block;font-size: 14px;width:90px;line-height: 14px;padding:7px 0;border-radius: 2px;box-sizing: border-box;text-align: center;}
+.btn-blue{background-color: @common-blue;color:#fff;border:1px solid @common-blue;
+    &:hover{background-color: @common-blue-dark;border-color:@common-blue-dark;}
 }
+.btn-blue[disabled]{
+    background-color:@common-gray-light;color:@font-color-gray;border:1px solid @common-gray-light;
+}
+/**幽灵按钮*/
+.btn-spirit{background-color: #fff;color:@common-blue;border:1px solid @common-blue;
+    &:hover{border-color:@common-blue-dark;color:@common-blue-dark;}
+}
+.btn-disable{background-color:@common-gray-light;color:@font-color-gray;border:1px solid @common-gray-light;}
+/**雪碧图*/
+.sprite-icon{display: inline-block;vertical-align: middle;}
+
 .mt2{margin-top:2px;}
 .mt10{margin-top: 10px;}
 .mr6{margin-right:6px;}
