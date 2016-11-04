@@ -71,12 +71,15 @@ var wordNumLimit = (function($){
 			var that = $(this), hint = that.parent().find('.'+classes.hintCls);
 			that.on({
 				keyup:function(){
+					console.log("event keyup");
 					wordNumLimitFun(that, hint);
 				},
 				mouseout:function(){
+					console.log("event mouseout");
 					wordNumLimitFun(that, hint);
 				},
 				input:function(){
+					console.log("event input");
 					wordNumLimitFun(that, hint);
 				}
 			});
