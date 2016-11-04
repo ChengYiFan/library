@@ -9,9 +9,9 @@
 var wordNumLimit = (function($){
 	var options = {
 		$container : null,  //编辑框的顶层父对象
-		maxnum: 100,        //限制输入长度
+		maxnum: 200,        //限制输入长度
 		isSlice: false,     //超过限制输入长度后是否截取文本域
-		limitByLen: false,  //是否依照文本域内容长度为限制标准，true的话选择包含中文只能输入100个，全ASCII码能够输入200个的限制标准。
+		limitByLen: false,  //是否依照文本域内容长度为限制标准，true的话选择包含中文只能输入200个，全ASCII码能够输入400个的限制标准。
 		isDisableBtn:true   //超过限制输入长度后是否使提交按钮不可用
 	},
 	classes = {
@@ -74,6 +74,9 @@ var wordNumLimit = (function($){
 					wordNumLimitFun(that, hint);
 				},
 				mouseout:function(){
+					wordNumLimitFun(that, hint);
+				},
+				input:function(){
 					wordNumLimitFun(that, hint);
 				}
 			});
