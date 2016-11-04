@@ -81,6 +81,10 @@ var wordNumLimit = (function($){
 				input:function(){
 					console.log("event input");
 					wordNumLimitFun(that, hint);
+				},
+				propertychange:function(){
+					console.log("event IEinput");
+					wordNumLimitFun(that, hint);
 				}
 			});
 		});
