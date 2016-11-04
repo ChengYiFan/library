@@ -1,7 +1,7 @@
 /**
 * 文本域输入长度限制插件
 * @author: Cynthia.Cheng
-* Last update date: 2016-11-02
+* Last update date: 2016-11-04
 * Copyright(c) 2016 by Cynthia.Cheng
 * 要求jQuery 1.9+以上
 */
@@ -26,32 +26,32 @@ var wordNumLimit = (function($){
 	initModule;
 
 	//输入字符个数限制
-	wordNumLimitFun = function(element){
+	wordNumLimitFun = function(element, hint){
 		var strLen;
 		if(options.limitByLen){
 			strLen = element.val().length;
-			strLen > options.maxnum ? overflow(element, ~~(strLen-options.maxnum)) : normal(~~(options.maxnum - strLen));
+			strLen > options.maxnum ? overflow(element, ~~(strLen-options.maxnum), hint) : normal(~~(options.maxnum - strLen), hint);
 		}else{
 			//正则表达式/[^\x00-\xff]/g匹配汉字汉字符号
 			var strnum = (element.val().replace(/[^\x00-\xff]/g,"")).length,
 				abcnum =  element.val().length - strnum;
 			strLen = abcnum * 2 + strnum; //字符串的长度
-			strLen > options.maxnum * 2 ? overflow(element, ~~((strLen-options.maxnum*2)/2)) : normal(~~((options.maxnum*2-strLen)/2));
+			strLen > options.maxnum * 2 ? overflow(element, ~~((strLen-options.maxnum*2)/2), hint) : normal(~~((options.maxnum*2-strLen)/2), hint);
 		}
 	};
 	//溢出时执行的操作
 	overflow = function(){
 		wordSliceFun(arguments[0]);
 		if(options.isDisableBtn){
-			options.$hint.find('input[type=submit]').attr('disabled',true);
-			hintTxt('已超出<em>'+arguments[1]+'</em>字');
+			arguments[2].find('input[type=submit]').attr('disabled',true);
+			hintTxt('已超出<em>'+arguments[1]+'</em>字',arguments[2]);
 		}
 	};
 	//正常操作
 	normal = function(){
-		hintTxt('还能输入<em>'+arguments[0]+'</em>字');
+		hintTxt('还能输入<em>'+arguments[0]+'</em>字',arguments[1]);
 		if(options.isDisableBtn){
-			options.$hint.find('input[type=submit]').removeAttr('disabled');
+			arguments[1].find('input[type=submit]').removeAttr('disabled');
 		}
 	};
 	//截取文本域
@@ -61,27 +61,27 @@ var wordNumLimit = (function($){
 	};
 	//提示信息
 	hintTxt = function(){
-		options.$hint.find('.hint-txt').html(arguments[0]);
+		arguments[1].find('.hint-txt').html(arguments[0]);
 	};
 	//绑定事件
 	eBind = function(){
-		var con = options.$container,
-			editor = con.find('.'+classes.editorCls);
+		var editor = options.$container.find('.'+classes.editorCls);
 		//$(document).on()
-		editor.on({
-			keyup:function(){
-				wordNumLimitFun(editor);
-			},
-			mouseout:function(){
-				wordNumLimitFun(editor);
-			}
+		editor.each(function(i){
+			var that = $(this), hint = that.parent().find('.'+classes.hintCls);
+			that.on({
+				keyup:function(){
+					wordNumLimitFun(that, hint);
+				},
+				mouseout:function(){
+					wordNumLimitFun(that, hint);
+				}
+			});
 		});
 	};
 	//初始化
 	initModule = function(opts){
 		options = $.extend(options, opts);
-		options.$editor = options.$container.find('.'+classes.editorCls);
-		options.$hint = options.$container.find('.'+classes.hintCls);
 		eBind();	
 	};
 	return {initModule:initModule};

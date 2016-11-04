@@ -10,19 +10,8 @@
 </head>
 <body>
 	<form action="">
-		<div id="editorArea1" class="editorArea">
-			<h3 class="mb20">示例1：1汉字=2英文字符，超出设置输入长度后不截取字符串，设置提交按钮不可用</h3>
-			<textarea name="" id="" cols="30" rows="10" class="editor"></textarea>
-			<p class="hint">
-				<span class="hint-txt">还能输入<em>100</em>字</span>
-				<input type="submit" class="btn btn-blue" value="发布">
-			</p>
-		</div>
-	</form>
-	<form action="">
-		<div id="editorArea2" class="editorArea">
-			<h3 class="mb20">示例2：1个汉字=2英文字符，超出设置输入长度后截取字符串</h3>
-			<textarea name="" id="" cols="30" rows="10" class="editor"></textarea>
+		<div class="editorArea">
+			<textarea name="" id="" cols="30" rows="10" class="editor" id="editor1"></textarea>
 			<p class="hint">
 				<span class="hint-txt">还能输入<em>100</em>字</span>
 				<input type="submit" class="btn btn-blue" value="发布">
@@ -33,14 +22,10 @@
 	<script type="text/javascript" src="jquery.wordNumLimit.min.js"></script>
 	<script type="text/javascript">
 		wordNumLimit.initModule({
-			$container:$('#editorArea1'),
+			$container:$('.editorArea'),
 			isSlice:false,
-			isDisableBtn: true
-		});
-		wordNumLimit.initModule({
-			$container:$('#editorArea2'),
-			isSlice:true,
-			isDisableBtn: false
+			isDisableBtn: true,
+			limitByLen: true
 		});
 	</script>
 </body>
