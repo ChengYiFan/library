@@ -18,22 +18,26 @@
 					<dl>
 						<dt class="menu-title">jQuery插件</dt>
 						<dd>
-							<dl>
-								<dt>输入长度限制插件</dt>
-								<dd>
-									<a href="wordNumLimit/index.html" class="menu-item">依照文本域内容长度为限制标准</a>
-								</dd>
-							</dl>
+							<a href="wordNumLimit/index.html" class="menu-item">输入长度限制插件</a>
 						</dd>
-						<dd><a class="menu-item" href="wordNumLimit/index.html">Ajax分页插件</a></dd>
+						<dd><a class="menu-item" href="">Ajax分页插件</a></dd>
 					</dl>
 				</div>
 			</div>
 			<div class="main">
-				<iframe src="wordNumLimit/index.html" frameborder="0" width="100%" height="100%"></iframe>
+				<iframe src="wordNumLimit/index.html" frameborder="0" width="100%" height="100%" id="main-iframe"></iframe>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="common/js/jquery-1.9.1.min.js">
+	<script type="text/javascript" src="common/js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('.menu-item').click(function(){
+				var self = $(this), href = self.attr('href');
+				document.getElementById('main-iframe').src = href;
+				return false;
+			});
+		});
+	</script>
 </body>
 </html>
