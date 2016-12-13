@@ -7,6 +7,8 @@
 @border-line-color:#e9ebee;
 @color-orange: #fea964;
 @color-red: #ff6b6b;
+
+@red-subject:#d33f3f;
 @hack:~"\9"; /*IE6-IE10*/
 @hack:~"\0"; /*IE8*/
 @hack:~"\9\0";/*IE9"*/
@@ -20,7 +22,7 @@ body{
     line-height: 1.5;
     font-size: 14px;
     color:#222;
-    font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";
+    font-family: "Microsoft Yahei",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";
 }
 div,p,ul,li,form,h1,h2,h3,h4,h5,h6,button,textarea{margin:0;padding:0;}
 h1,h2,h3,h4,h5,h6{font-weight: normal;}
@@ -58,5 +60,13 @@ input[type=text]{-webkit-appearence: none;}
 .pull-right{float:right;}
 .color-orange{color:#c35326;}
 
+.tabs{
+    li{float:left;padding:8px 25px 12px 25px;
+        a{color:#999;font-weight: 600;}
+        &.active{border-bottom:2px solid #f0dad2;
+            a{color:@red-subject;}
+        }
+    }
+}
 
 
